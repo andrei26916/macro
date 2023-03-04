@@ -1,0 +1,15 @@
+{
+    "name": "diqeeeeeeeeei/ga",
+    "autoload": {
+        "psr-4": {
+            "Diqeeeeeeeeei\\macro\\": "app"
+        }
+    },
+    "authors": [
+        {
+            "name": "andrei26916",
+            "email": "andrey.stosh@yandex.ru"
+        }
+    ],
+    "require": {}
+}
