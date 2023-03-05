@@ -30,7 +30,7 @@ class RequestValidator
     /**
      * @return void
      */
-    private function check()
+    public function check()
     {
         $this->query  = array_merge($_POST, $_GET);
 
