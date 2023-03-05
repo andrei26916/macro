@@ -64,16 +64,16 @@ class Router implements RouteInterface
 
     public static function post($url, array $class)
     {
-        // TODO: Implement post() method.
+        self::add($url, 'POST', $class);
     }
 
     public static function put($url, array $class)
     {
-        // TODO: Implement put() method.
+        self::add($url, 'PUT', $class);
     }
 
     public static function delete($url, array $class)
     {
-        // TODO: Implement delete() method.
+        self::add($url, 'DELETE', $class);
     }
 }
