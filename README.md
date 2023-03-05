@@ -31,7 +31,9 @@
     Примеры
 
     (new Model)->where('rating', 100, '>')->where('rating', 1000, '<')->select('id, rating')->orderBy('id', 'DESC')->limit(5)->get();
-    
+
+    (new Model)->where('id', 1)->first();    
+
     (new Model)->insert([
         'name' => 'Test',
         'rating' => 100
