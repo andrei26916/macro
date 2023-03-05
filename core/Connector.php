@@ -2,7 +2,7 @@
 
 namespace core;
 
-final class DbConnector
+final class Connector
 {
     private static $_instance = null;
 
