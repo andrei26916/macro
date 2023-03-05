@@ -11,5 +11,8 @@
             "email": "andrey.stosh@yandex.ru"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^7.3|^8.0",
+        "ext-pdo": "*"
+    }
 }
