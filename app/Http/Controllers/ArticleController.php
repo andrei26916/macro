@@ -30,7 +30,15 @@ class ArticleController
      */
     public function index()
     {
-        return (new ArticleService())->index();
+        $page = 1;
+
+        if (array_key_exists('page', $_GET)){
+            if ((int)$_GET['page'] > 0){
+                $page = $_GET['page'];
+            }
+        }
+
+        return (new ArticleService())->paginate($page);
     }
 
     /**
