@@ -17,6 +17,8 @@ class DB
 
     private $orderBy = '';
 
+    private $limit = '';
+
     public function __construct()
     {
         try {
@@ -93,6 +95,18 @@ class DB
     public function orderBy(string $column, string $type = 'ASC'): DB
     {
         $this->orderBy = ' ORDER BY ' . $column . ' ' . $type;
+
+        return $this;
+    }
+
+    /**
+     * @param  int  $count
+     * @param  int  $offset
+     * @return $this
+     */
+    public function limit(int $count, int $offset = 0): DB
+    {
+        $this->limit = ' LIMIT ' . $offset . ', ' . $count;
 
         return $this;
     }
@@ -186,6 +200,8 @@ class DB
         $sql .= $this->processingWhere();
 
         $sql .= $this->orderBy;
+
+        $sql .= $this->limit;
 
         return $sql;
     }
