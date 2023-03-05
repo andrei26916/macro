@@ -33,7 +33,11 @@ class Router implements RouteInterface
 
                 $func = self::$lists[$url]['class'][1];
 
-                (new $class)->$func();
+                $response = (new $class)->$func();
+
+                if (!is_null($response)) {
+                    echo json_encode($response);
+                }
 
                 return true;
             }
