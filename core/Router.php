@@ -62,16 +62,31 @@ class Router implements RouteInterface
         self::add($url, 'GET', $class);
     }
 
+    /**
+     * @param $url
+     * @param  array  $class
+     * @return void
+     */
     public static function post($url, array $class)
     {
         self::add($url, 'POST', $class);
     }
 
+    /**
+     * @param $url
+     * @param  array  $class
+     * @return void
+     */
     public static function put($url, array $class)
     {
         self::add($url, 'PUT', $class);
     }
 
+    /**
+     * @param $url
+     * @param  array  $class
+     * @return void
+     */
     public static function delete($url, array $class)
     {
         self::add($url, 'DELETE', $class);
