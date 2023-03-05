@@ -129,9 +129,9 @@ class DB
 
     /**
      * @param  array  $insert
-     * @return bool
+     * @return int
      */
-    public function insert(array $insert): bool
+    public function insert(array $insert): int
     {
         $sql = 'INSERT INTO '
             . $this->table
@@ -142,7 +142,9 @@ class DB
 
         $result = $this->pdo->prepare($sql);
 
-        return $result->execute(array_values($insert));
+        $result->execute(array_values($insert));
+
+        return $this->pdo->lastInsertId();
     }
 
     /**
