@@ -33,6 +33,8 @@ class Response
         header("Status: 404 Not Found");
 
         echo '404 Not Found';
+
+        die();
     }
 
 }

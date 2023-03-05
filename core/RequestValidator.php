@@ -6,25 +6,35 @@ class RequestValidator
 {
     protected $fillable = [];
 
+    private $query = [];
+
     public function __construct()
     {
-        $this->validate();
+        $this->check();
+    }
+
+    /**
+     * @return array
+     */
+    public function validated(): array
+    {
+        $result = [];
+
+        foreach ($this->fillable as $item){
+            $result[$item] = $this->query[$item];
+        }
+
+        return $result;
     }
 
     /**
      * @return void
      */
-    private function validate()
+    private function check()
     {
-        $query = [];
+        $this->query  = array_merge($_POST, $_GET);
 
-        $parts = parse_url($_SERVER['REQUEST_URI']);
-
-        if (array_key_exists('query', $parts)) {
-            parse_str($parts['query'], $query);
-        }
-
-        $validator = new Validator($query);
+        $validator = new Validator($this->query);
 
         $validator->setFillable($this->fillable);
 
