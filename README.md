@@ -13,7 +13,7 @@
     5. Реквесты создаються в папке app/Http/Requests, наследуються от RequestValidator в protected $fillable указываються обязательные поля запроса. Метод check можеть быть переопределенно для дополнения правил валидации
 
 ### Методы моделей
-Методы моделей такие же как у laravel 
+Методы моделей такие же как у laravel. Можно использовать подряд
 
     
     insert  - принимает массив для добавления
@@ -27,6 +27,15 @@
     first   - получить одну запись, принимает PDO mode (по умолчанию PDO::FETCH_OBJ)
     get     - получить массив записей, принимает PDO mode (по умолчанию PDO::FETCH_OBJ)
     
+
+    Примеры
+
+    (new Model)->where('rating', 100, '>')->where('rating', 1000, '<')->select('id, rating')->orderBy('id', 'DESC')->limit(5)->get();
+    
+    (new Model)->insert([
+        'name' => 'Test',
+        'rating' => 100
+    ]);
     
 ### API Методы
 
