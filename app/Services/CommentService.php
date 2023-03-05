@@ -15,4 +15,13 @@ class CommentService
         return (new Comment())->insert($data);
     }
 
+    /**
+     * @param  int  $articleId
+     * @return mixed
+     */
+    public function index(int $articleId)
+    {
+        return (new Comment())->where('article_id', $articleId)->get();
+    }
+
 }
