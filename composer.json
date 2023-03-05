@@ -2,7 +2,7 @@
     "name": "diqeeeeeeeeei/ga",
     "autoload": {
         "psr-4": {
-            "Diqeeeeeeeeei\\macro\\": "app"
+            "App\\": "app"
         }
     },
     "authors": [
