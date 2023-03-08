@@ -4,7 +4,7 @@ use core\Router;
 
 Router::get('/', [\App\Http\Controllers\Controller::class, 'index']);
 
-Router::get('/article/', [\App\Http\Controllers\ArticleController::class, 'show']);
+Router::get('/article', [\App\Http\Controllers\ArticleController::class, 'show']);
 
 Router::get('/articles', [\App\Http\Controllers\ArticleController::class, 'index']);
 

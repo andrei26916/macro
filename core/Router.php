@@ -6,13 +6,16 @@ require_once 'RouteInterface.php';
 
 class Router implements RouteInterface
 {
-    private static $lists = [];
+    private static $lists = [
+        'GET' => [],
+        'POST' => [],
+        'DELETE' => []
+    ];
 
     private static function add($url, $method, array $class)
     {
-        self::$lists = array_merge(self::$lists, [
+        self::$lists[$method] = array_merge(self::$lists[$method], [
             $url => [
-                'method' => $method,
                 'class' => $class
             ]
         ]);
@@ -23,24 +26,22 @@ class Router implements RouteInterface
      */
     private static function generate()
     {
+        $method = $_SERVER['REQUEST_METHOD'];
         $url = explode('?', $_SERVER['REQUEST_URI']);
         $url = $url[0];
 
-        if (array_key_exists($url, self::$lists)){
-            if (self::$lists[$url]['method'] === $_SERVER['REQUEST_METHOD']){
+        if (array_key_exists($url, self::$lists[$method])){
+            $class = self::$lists[$method][$url]['class'][0];
 
-                $class = self::$lists[$url]['class'][0];
+            $func = self::$lists[$method][$url]['class'][1];
 
-                $func = self::$lists[$url]['class'][1];
+            $response = (new $class)->$func();
 
-                $response = (new $class)->$func();
-
-                if (!is_null($response)) {
-                    echo json_encode($response);
-                }
-
-                return true;
+            if (!is_null($response)) {
+                echo json_encode($response);
             }
+
+            return true;
         }
 
         return false;
